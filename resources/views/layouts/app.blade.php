@@ -1,12 +1,29 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <title>@yield('title')</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    @include('components.navbar') <main class="container mt-4">
-        @yield('content') </main>
-</body>
-</html>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="{{ url('/') }}">My Blog</a>
+        
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav">
+                {{-- Trang chủ --}}
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('posts.index') ? 'active' : '' }}" 
+                       href="{{ route('posts.index') }}">Bài viết</a>
+                </li>
+
+                {{-- Trang tạo mới --}}
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('posts.create') ? 'active' : '' }}" 
+                       href="{{ route('posts.create') }}">Đăng bài mới</a>
+                </li>
+
+                {{-- Các mục chưa xây dựng (Đã ẩn link để tránh lỗi) --}}
+                <li class="nav-item">
+                    <span class="nav-link text-muted">Sản phẩm</span>
+                </li>
+                <li class="nav-item">
+                    <span class="nav-link text-muted">Danh mục</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
