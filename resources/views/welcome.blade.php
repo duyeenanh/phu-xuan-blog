@@ -1,12 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.app') 
 
-@section('title', 'Trang chủ')
+@section('title', 'Trang chủ') 
 
 @section('content')
-    <div class="p-5 mb-4 bg-light rounded-3">
-        <div class="container-fluid py-5">
-            <h1 class="display-5 fw-bold">Chào mừng bạn đến với Website!</h1>
-            <p>Đây là trang chủ của bạn.</p>
-        </div>
+    <div class="p-5 bg-light rounded-3">
+        <h1>Chào mừng bạn đến với Website!</h1>
+        <p>Đây là nội dung của trang chủ.</p>
     </div>
 @endsection

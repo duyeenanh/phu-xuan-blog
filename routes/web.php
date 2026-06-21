@@ -6,11 +6,11 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 
-// 1. Route cơ bản
-Route::get('/', function () { return view('welcome'); })->name('home');
-Route::get('/about', function () { return view('about'); })->name('about');
+Route::get('/', function () {
+    return view('welcome');
+});
 
-// 2. Resource Routes (Bài tập bắt buộc)
+// Khai báo chuẩn các Resource Route
 Route::resource('articles', ArticleController::class);
 Route::resource('products', ProductController::class);
 Route::resource('categories', CategoryController::class);
