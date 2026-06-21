@@ -1,17 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Trang Chủ</title>
-</head>
-<body>
-    <nav>
-        <a href="{{ route('home') }}">Trang chủ</a> |
-        <a href="{{ route('about') }}">Giới thiệu</a> |
-        <a href="{{ route('shop.products') }}">Sản phẩm</a> |
-        <a href="{{ route('shop.cart') }}">Giỏ hàng</a> |
-        <a href="{{ route('contact') }}">Liên hệ</a>
-    </nav>
+@extends('layouts.app')
 
-    <h1>Chào mừng bạn đến với Website!</h1>
-</body>
-</html>
+@section('title', 'Trang chủ')
+
+@section('content')
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">Chào mừng bạn đến với Website!</h1>
+            <p>Đây là trang chủ của bạn.</p>
+        </div>
+    </div>
+@endsection
