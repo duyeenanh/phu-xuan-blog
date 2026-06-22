@@ -18,6 +18,7 @@ class PostController extends Controller
             'content' => 'required|min:10',
         ]);
         
-        return "Tạo bài viết thành công!";
+        // Lab 3: Flash message thành công
+        return redirect()->route('posts.create')->with('success', 'Tạo bài viết thành công!');
     }
 }

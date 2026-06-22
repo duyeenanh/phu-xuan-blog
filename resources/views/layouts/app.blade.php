@@ -27,3 +27,17 @@
         </div>
     </div>
 </nav>
+<div class="container mt-4">
+    {{-- Hiển thị Flash Message --}}
+    @if (session('success'))
+        <div class="alert alert-success" style="padding: 15px; background-color: #d4edda; border-color: #c3e6cb; color: #155724; margin-bottom: 20px;">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    {{-- Nội dung chính --}}
+    @yield('content')
+</div>
+
+    @yield('content')
+</div>
