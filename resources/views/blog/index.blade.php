@@ -10,4 +10,4 @@
         </div>
         <hr>
     @endforeach
-@endsection
+@endsectionphp 

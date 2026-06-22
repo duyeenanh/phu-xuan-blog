@@ -1,29 +1,22 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Controllers;
 
-use Illuminate\Contracts\Validation\ValidationRule;
-use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Category;
+use App\Http\Requests\CategoryRequest; // <--- Cần dòng này
 
-class CategoryRequest extends FormRequest
+class CategoryController extends Controller
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
+    public function store(CategoryRequest $request)
     {
-        return false;
+        Category::create($request->validated());
+        return redirect()->route('categories.index')->with('success', 'Tạo danh mục thành công!');
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, ValidationRule|array<mixed>|string>
-     */
-    public function rules(): array
+    public function update(CategoryRequest $request, $id)
     {
-        return [
-            //
-        ];
+        $category = Category::findOrFail($id);
+        $category->update($request->validated());
+        return redirect()->route('categories.index')->with('success', 'Cập nhật danh mục thành công!');
     }
 }
