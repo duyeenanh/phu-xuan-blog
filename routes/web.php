@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\CategoryController; // Nhớ thêm dòng này
+use App\Http\Controllers\CategoryController; // Khai báo ở trên cùng
 
 // Các route của Post
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
@@ -15,5 +15,6 @@ Route::get('/', function () {
     return redirect('/posts/create');
 });
 
-// DÁN DÒNG NÀY VÀO ĐÂY:
+// Các route cho Category
 Route::put('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');

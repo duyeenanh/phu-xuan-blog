@@ -1,22 +1,30 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Requests;
 
-use App\Models\Category;
-use App\Http\Requests\CategoryRequest; // <--- Cần dòng này
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class CategoryController extends Controller
+class CategoryRequest extends FormRequest
 {
-    public function store(CategoryRequest $request)
+    public function authorize(): bool { return true; }
+
+    public function rules(): array
     {
-        Category::create($request->validated());
-        return redirect()->route('categories.index')->with('success', 'Tạo danh mục thành công!');
+        $categoryId = $this->route('category'); 
+        return [
+            'name' => 'required|min:2|max:100',
+            'slug' => ['required', Rule::unique('categories', 'slug')->ignore($categoryId)],
+            'description' => 'nullable|max:500',
+        ];
     }
 
-    public function update(CategoryRequest $request, $id)
+    public function messages(): array
     {
-        $category = Category::findOrFail($id);
-        $category->update($request->validated());
-        return redirect()->route('categories.index')->with('success', 'Cập nhật danh mục thành công!');
+        return [
+            'name.required' => 'Tên danh mục không được để trống.',
+            'name.min' => 'Tên danh mục phải có ít nhất 2 ký tự.',
+            'slug.unique' => 'Slug này đã tồn tại.',
+        ];
     }
 }
